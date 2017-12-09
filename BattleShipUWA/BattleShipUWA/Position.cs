@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace BattleShipUWA {    
     // https://stackoverflow.com/a/36780497
     public struct Position {
-        public Position(int x, string y) {
+        public Position(int x, int y) {
             X = x;
             Y = y;
         }
 
         // https://stackoverflow.com/a/15376927
         public int X { get { return X; } set {; } } 
-        public string Y { get { return Y;  } set {; } } // OMfG.. c#...
+        public int Y { get { return Y;  } set {; } } // OMfG.. c#...
 
         public Position add(Position pos) {
             this.X += pos.X;

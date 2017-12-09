@@ -27,7 +27,18 @@ namespace BattleShipUWA {
         }
 
         private void makeGrid() {
-            mapGrid.
+            // make grid 
+            /*
+             * Lines vizible
+             * each cell blue collor
+             * 
+             */
+
         }
+
+        // add events on tap
+
+        // populate grid 
+        // 
     }
 }
