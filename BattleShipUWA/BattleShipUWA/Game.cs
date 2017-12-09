@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 
 namespace BattleShipUWA {
     class Game {
-        private Dictionary<Position, Value> enemyMap;
+        private List<Ship> ships;
+
+        public Game() { }
+
+        void addShip(Ship ship) {
+            ships.Add(ship);
+        }
+
+        bool isShipHere(Position pos) {
+            foreach( Ship ship in ships ){
+                if( ship.isShip(pos) ){ return true; }
+            }
+            return false;
+        }
+
+
     }
 }

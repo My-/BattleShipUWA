@@ -12,7 +12,21 @@ namespace BattleShipUWA {
             Y = y;
         }
 
-        public int X { get; }
-        public string Y { get; }
+        // https://stackoverflow.com/a/15376927
+        public int X { get { return X; } set {; } } 
+        public string Y { get { return Y;  } set {; } } // OMfG.. c#...
+
+        public Position add(Position pos) {
+            this.X += pos.X;
+            this.Y += pos.Y;
+            return this;
+        }
+
+        public bool equals(Position pos) {
+            return this.X == pos.X && this.Y == pos.Y;
+        }
+
     }
+
+    
 }

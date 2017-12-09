@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleShipUWA {
     
-    class Ship {
-        Position head;
-        Position direction;
-        int size;
-
+    class Ship {  
         public Ship(int size) {
             this.size = size;
         }
@@ -21,12 +17,20 @@ namespace BattleShipUWA {
             this.size = size;
         }
 
-        public void setDirection(Position pos) {
-            this.direction = pos;
+        public Position direction { set; get; }
+        public Position head { set; get; }
+        public int size { get; }
+
+        public bool isShip(Position pos) {
+            for( int i = 0; i < size; i++ ) {
+                if( head.add(direction).equals(pos) ) {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        public void setHead(Position pos) {
-            this.head = pos;
-        }
+        
+
     }
 }
