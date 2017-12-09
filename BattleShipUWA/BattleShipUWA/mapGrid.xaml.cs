@@ -39,6 +39,8 @@ namespace BattleShipUWA {
         // add events on tap
 
         // populate grid 
+        // Game.creatEnemyShipYard / Game.createAllyShipYard
         // 
+        // extra: allow modify ship plasement
     }
 }

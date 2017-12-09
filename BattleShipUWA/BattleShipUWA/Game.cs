@@ -30,7 +30,16 @@ namespace BattleShipUWA {
             return false;
         }
 
-        void createEnemy() {
+        void createEnemyShipYard() {
+            createShipYard(enemyShips);
+        }
+
+        void createAllyShipYard() {
+            createShipYard(allyShips);
+        }
+
+
+        void createShipYard(List<Ship> shipYard) {
             Random rnd = new Random(); // https://stackoverflow.com/a/2706537
 
             foreach ( Ship ship in ships ){
@@ -56,7 +65,7 @@ namespace BattleShipUWA {
                     }
                 } while( !Ok );
 
-                enemyShips.Add( new Ship(head, direction, ship.size) );
+                shipYard.Add( new Ship(head, direction, ship.size) );
                 
             }// foreach ships
         }
