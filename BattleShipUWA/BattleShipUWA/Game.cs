@@ -34,8 +34,31 @@ namespace BattleShipUWA {
             Random rnd = new Random(); // https://stackoverflow.com/a/2706537
 
             foreach ( Ship ship in ships ){
-                ship.head = new Position(rnd.Next(LIMIT), rnd.Next(LIMIT));
-            }
+                Position head, pos;
+                bool Ok = true;
+                int[] direction;
+
+                do {
+                    do { head = Position.getRandom(LIMIT); }
+                    while (isShipHere(head));
+                    
+                    int n = rnd.Next(3) < 2 ? -1 : 1; // adds negative numbers to direction
+                    do {  direction = new int[] { rnd.Next(2) * n, rnd.Next(2) * n }; }
+                    while (direction[0] == direction[1]);
+
+                    pos = new Position(head);
+                    for (int i = 0; i < ship.size; i++) {
+                        pos = pos.offset(direction);
+                        if ( isShipHere(pos) ) {
+                            Ok = false;
+                            break;
+                        }
+                    }
+                } while( !Ok );
+
+                enemyShips.Add( new Ship(head, direction, ship.size) );
+                
+            }// foreach ships
         }
 
         bool inLimits(int n) {

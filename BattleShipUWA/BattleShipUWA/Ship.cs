@@ -11,19 +11,19 @@ namespace BattleShipUWA {
             this.size = size;
         }
 
-        public Ship(Position head, Position direction, int size) {
+        public Ship(Position head, int[] direction, int size) {
             this.head = head;
             this.direction = direction;
             this.size = size;
         }
 
-        public Position direction { set; get; }
+        public int[] direction { set; get; }
         public Position head { set; get; }
         public int size { get; }
 
         public bool isShip(Position pos) {
             for( int i = 0; i < size; i++ ) {
-                if( head.add(direction).equals(pos) ) {
+                if( head.offset(direction).equals(pos) ) {
                     return true;
                 }
             }
