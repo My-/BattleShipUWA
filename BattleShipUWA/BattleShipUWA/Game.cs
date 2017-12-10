@@ -8,16 +8,19 @@ namespace BattleShipUWA {
     class Game {
         const int LIMIT = 10;
 
-        List<Ship> ships = new List<Ship> {
+        public static List<Ship> ships = new List<Ship> {
             new Ship(1), new Ship(1), new Ship(1), new Ship(1),
             new Ship(2), new Ship(2), new Ship(2),
             new Ship(3), new Ship(3),
             new Ship(4) }; 
 
-        private List<Ship> allyShips;
-        private List<Ship> enemyShips;       
+        public List<Ship> allyShips;
+        public List<Ship> enemyShips;       
 
-        public Game() { }
+        public Game() {
+            createAllyShipYard();
+            createEnemyShipYard();
+        }
 
         void addShip(Ship ship) {
             allyShips.Add(ship);
