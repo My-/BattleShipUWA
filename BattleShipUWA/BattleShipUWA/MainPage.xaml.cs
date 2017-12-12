@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,6 +25,7 @@ namespace BattleShipUWA
     public sealed partial class MainPage : Page{
         #region Global variables
         Game game;
+        Grid allyGrid;
         #endregion
 
         public MainPage(){
@@ -34,15 +36,17 @@ namespace BattleShipUWA
 
         private void createGUI() {
             game = new Game();
-            
+
             drawAllyGrid();
-            drawInventoryStack();
+            //drawInventoryStac/*k();*/
             drawEnemyGrid();
         }
 
         private void drawEnemyGrid() {
-            enemyGrid = mapGrid();
-            drawShips(game.enemyShips, enemyGrid);
+            //enemyGrid = mapGrid();
+
+
+            //drawShips(game.enemyShips, enemyGrid);
         }
 
         private void drawShips(List<Ship> enemyShips, Grid enemyGrid) {
@@ -61,25 +65,53 @@ namespace BattleShipUWA
         }
 
         private void drawAllyGrid() {
-            alliesGrid = mapGrid();
-            drawShips(game.allyShips, alliesGrid);
-        }
-
-        private void drawInventoryStack() {
-            
-            StackPanel stack = new StackPanel();
-            stack.VerticalAlignment = VerticalAlignment.Bottom;
-
-            foreach( Ship ship in Game.ships) {
-                StackPanel shipPane = new StackPanel();
-                shipPane.HorizontalAlignment = HorizontalAlignment.Center;
-                
-                for(int i = 0; i < ship.size; i++) {
-                    shipPane.getChildren().add( new StackPanel(50,50));
-                }
-                stack.getChildren().add(shipPane);
+            allyGrid = new Grid();
+            allyGrid.Width = 500;
+            allyGrid.Height = 500;
+            for (int i = 0; i < 10; i++) {
+                allyGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                allyGrid.RowDefinitions.Add(new RowDefinition());
             }
+            for (int row = 0; row < 10; row++){
+                for (int col = 0; col < 10; col++){
+                    Border border = new Border(){
+                        Height = 50,
+                        Width = 50,
+                        BorderThickness = new Thickness(5),
+                        Background = new SolidColorBrush(Colors.Blue),
+                        Name = "b_" + row + "_" + col
+                    };
+                    border.SetValue(Grid.RowProperty,row);
+                    border.SetValue(Grid.ColumnProperty, col);
+                    allyGrid.Children.Add(border);
+                    border.Tapped += Border_Tapped;
+                }
+            }
+            mainSP.Children.Add(allyGrid);            
         }
+
+        private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
+            String senderName = ((Border)sender).Name;
+            int row = Convert.ToInt32(senderName.Substring(2, 1));
+            int col = Convert.ToInt32(senderName.Substring(4, 1));
+            Debug.WriteLine("Taped@("+ row +", "+ col +")");
+        }
+
+        //private void drawInventoryStack() {
+            
+        //    StackPanel stack = new StackPanel();
+        //    stack.VerticalAlignment = VerticalAlignment.Bottom;
+
+        //    foreach( Ship ship in Game.ships) {
+        //        StackPanel shipPane = new StackPanel();
+        //        shipPane.HorizontalAlignment = HorizontalAlignment.Center;
+                
+        //        for(int i = 0; i < ship.size; i++) {
+        //            shipPane.Children.add( new StackPanel(50,50));
+        //        }
+        //        stack.Children.add(shipPane);
+        //    }
+        //}
 
         // Position(x,y)
         // atack(x,y) - Game.isShiphere(Positioon)

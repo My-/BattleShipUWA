@@ -8,6 +8,8 @@ namespace BattleShipUWA {
     
     class Ship {  
         public Ship(int size) {
+            this.head = new Position(0, 0);
+            this.direction = new int[]{0, 0};
             this.size = size;
         }
 
@@ -31,6 +33,8 @@ namespace BattleShipUWA {
         }
 
         
-
+        public override string ToString(){
+            return "Ship{ head: "+ head +", direction: ("+ direction[0] +", "+ direction[1] +"), size: "+ size +"}";
+        } 
     }
 }

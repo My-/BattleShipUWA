@@ -7,23 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:ConnectionId='1' x:Name="rootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel x:ConnectionId='2' x:Name="wraperStack" HorizontalAlignment="Center">
-            <!-- Allie ship map goes here -->
-            <Grid x:ConnectionId='3' x:Name="alliesGrid">
-                <!-- Code here -->
-            </Grid>
-
-            <!-- Enemy ship inventory goes here -->
-            <StackPanel x:ConnectionId='4' x:Name="inventoryStack" VerticalAlignment="Center">
-                <!-- Code here -->
-            </StackPanel>
-
-            <!-- Enemy ship map goes here -->
-            <Grid x:ConnectionId='5' x:Name="enemyGrid">
-                <!-- Code here -->
-            </Grid>
-        </StackPanel>
-    </Grid>
+    <StackPanel x:ConnectionId='1' x:Name="mainSP" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+    </StackPanel>
 </Page>
 

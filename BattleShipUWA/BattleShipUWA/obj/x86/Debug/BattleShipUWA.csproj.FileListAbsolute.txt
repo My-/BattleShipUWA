@@ -1,6 +1,5 @@
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\App.xbf
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\MainPage.xbf
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\mapGrid.xbf
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.xr.xml
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.pdb
@@ -112,20 +111,15 @@ M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\System.Xml.Re
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\System.Xml.XDocument.dll
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\System.Xml.XmlDocument.dll
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\System.Xml.XmlSerializer.dll
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\BattleShipUWA.csprojResolveAssemblyReference.cache
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\App.g.i.cs
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\App.g.cs
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\MainPage.g.i.cs
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\MainPage.g.cs
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\mapGrid.g.i.cs
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\mapGrid.g.cs
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\XamlTypeInfo.g.cs
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\App.xaml
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\MainPage.xaml
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\mapGrid.xaml
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\App.xbf
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\MainPage.xbf
-M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\mapGrid.xbf
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\XamlSaveStateFile.xml
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\BattleShipUWA.exe
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\BattleShipUWA.pdb

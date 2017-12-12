@@ -28,13 +28,13 @@
     <AppXManifest Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-11-23T16:08:54.911</Modified>
+      <Modified>2017-12-12T20:45:14.090</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
       <PackagePath>entrypoint\BattleShipUWA.exe</PackagePath>
-      <Modified>2017-11-23T16:08:53.407</Modified>
+      <Modified>2017-12-12T20:45:13.832</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -488,7 +488,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.xr.xml">
       <PackagePath>BattleShipUWA.xr.xml</PackagePath>
-      <Modified>2017-11-23T16:08:53.222</Modified>
+      <Modified>2017-12-12T15:47:28.434</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -496,11 +496,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-11-23T16:08:54.555</Modified>
+      <Modified>2017-12-12T20:42:48.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
       <PackagePath>BattleShipUWA.exe</PackagePath>
-      <Modified>2017-11-23T16:08:54.908</Modified>
+      <Modified>2017-12-12T20:45:14.088</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
