@@ -29,7 +29,7 @@ namespace BattleShipUWA {
             allyShips.Add(ship);
         }
 
-        bool isShipHere(Position pos) {
+        public bool isShipHere(Position pos) {
             foreach( Ship ship in allyShips ){
                 if( ship.isShip(pos) ){ return true; }
             }
@@ -61,7 +61,7 @@ namespace BattleShipUWA {
                         break;
                     }
 
-                    int value = rnd.Next(3) < 2 ? -1 : 1;
+                    int value = rnd.Next(3) < 2 ? -1 : 1;  
                     int n = rnd.Next(2);
                     direction[n] = value; 
 

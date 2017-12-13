@@ -23,10 +23,11 @@ namespace BattleShipUWA
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page{
-        #region Global variables
+        //#region Global variables
         Game game;
         Grid allyGrid;
-        #endregion
+        Grid enemyGrid;
+        //#endregion
 
         public MainPage(){
             this.InitializeComponent();
@@ -37,17 +38,11 @@ namespace BattleShipUWA
         private void createGUI() {
             game = new Game();
 
-            drawAllyGrid();
-            //drawInventoryStac/*k();*/
-            drawEnemyGrid();
+            drawGrid(allyGrid);
+            drawGrid(enemyGrid);
         }
 
-        private void drawEnemyGrid() {
-            //enemyGrid = mapGrid();
-
-
-            //drawShips(game.enemyShips, enemyGrid);
-        }
+        
 
         private void drawShips(List<Ship> enemyShips, Grid enemyGrid) {
             foreach(Ship ship in enemyShips){
@@ -64,13 +59,13 @@ namespace BattleShipUWA
             }// foreach enemShips
         }
 
-        private void drawAllyGrid() {
-            allyGrid = new Grid();
-            allyGrid.Width = 500;
-            allyGrid.Height = 500;
+        private void drawGrid(Grid grid) {
+            grid = new Grid();
+            grid.Width = 500;
+            grid.Height = 500;
             for (int i = 0; i < 10; i++) {
-                allyGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                allyGrid.RowDefinitions.Add(new RowDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
             }
             for (int row = 0; row < 10; row++){
                 for (int col = 0; col < 10; col++){
@@ -83,11 +78,11 @@ namespace BattleShipUWA
                     };
                     border.SetValue(Grid.RowProperty,row);
                     border.SetValue(Grid.ColumnProperty, col);
-                    allyGrid.Children.Add(border);
+                    grid.Children.Add(border);
                     border.Tapped += Border_Tapped;
                 }
             }
-            mainSP.Children.Add(allyGrid);            
+            mainSP.Children.Add(grid);            
         }
 
         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
@@ -95,6 +90,10 @@ namespace BattleShipUWA
             int row = Convert.ToInt32(senderName.Substring(2, 1));
             int col = Convert.ToInt32(senderName.Substring(4, 1));
             Debug.WriteLine("Taped@("+ row +", "+ col +")");
+            if( game.isShipHere(new Position(row, col)) ){
+                ((Border)sender).Background = new SolidColorBrush(Colors.Red);
+            }       
+                
         }
 
         //private void drawInventoryStack() {
