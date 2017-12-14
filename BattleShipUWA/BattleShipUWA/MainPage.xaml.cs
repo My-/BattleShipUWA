@@ -27,12 +27,15 @@ namespace BattleShipUWA
         Game game;
         Grid allyGrid = new Grid();
         Grid enemyGrid = new Grid();
+        bool isEnemyTurn = false;
+        int shipsLeft = 20;
         //#endregion
 
         public MainPage(){
             this.InitializeComponent();
 
             createGUI();
+            playGame();
         }
 
         private void createGUI() {
@@ -42,7 +45,7 @@ namespace BattleShipUWA
             addMiddlePart();
             drawGrid(enemyGrid);
 
-            drawShips(game.enemyShips, enemyGrid);
+            //drawShips(game.enemyShips, enemyGrid);
             drawShips(game.allyShips, allyGrid);
         }
 
@@ -109,30 +112,12 @@ namespace BattleShipUWA
                 
         }
 
-        //private void drawInventoryStack() {
-            
-        //    StackPanel stack = new StackPanel();
-        //    stack.VerticalAlignment = VerticalAlignment.Bottom;
 
-        //    foreach( Ship ship in Game.ships) {
-        //        StackPanel shipPane = new StackPanel();
-        //        shipPane.HorizontalAlignment = HorizontalAlignment.Center;
-                
-        //        for(int i = 0; i < ship.size; i++) {
-        //            shipPane.Children.add( new StackPanel(50,50));
-        //        }
-        //        stack.Children.add(shipPane);
-        //    }
-        //}
+        private void playGame() {
+            //while( shipsLeft != 0 ) {
 
-        // Position(x,y)
-        // atack(x,y) - Game.isShiphere(Positioon)
-
-
-        /* menu:
-         *      new game
-         *      
-         */
+            //}
+        }
 
     }
 }

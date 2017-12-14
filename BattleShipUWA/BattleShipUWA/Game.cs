@@ -100,5 +100,10 @@ namespace BattleShipUWA {
         bool offLimits(Position pos) {
             return !inLimits(pos.X) || !inLimits(pos.Y);
         }
+
+        public Position enemyTurn() {
+            return Position.getRandom(LIMIT);
+        }
+
     }
 }
