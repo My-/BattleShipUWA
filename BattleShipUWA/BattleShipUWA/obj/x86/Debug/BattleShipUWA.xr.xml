@@ -9,6 +9,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Orientation" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Background" />
     </RootType>

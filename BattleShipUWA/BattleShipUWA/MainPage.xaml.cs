@@ -39,16 +39,22 @@ namespace BattleShipUWA
             game = new Game();
 
             drawGrid(allyGrid);
-            //drawGrid(enemyGrid);
+            addMiddlePart();
+            drawGrid(enemyGrid);
+            //drawShips(game.enemyShips, enemyGrid);
         }
 
-        
+        private void addMiddlePart(){
+            mainSP.Children.Add(new StackPanel() {
+                Width = 100                
+            });
+        }
 
         private void drawShips(List<Ship> enemyShips, Grid enemyGrid) {
             foreach(Ship ship in enemyShips){
                 Position pos = new Position(ship.head);
                 // marks grid cells wich is acupied by ship
-                for(int i = 0; i < ship.size; i++) {
+                for(int i = 0; i < ship.size -1; i++) {
                     Border b = new Border();
                     b.Background = new SolidColorBrush(Colors.Gray);
                     b.SetValue(Grid.RowProperty, pos.X);
@@ -90,7 +96,7 @@ namespace BattleShipUWA
             int row = Convert.ToInt32(senderName.Substring(2, 1));
             int col = Convert.ToInt32(senderName.Substring(4, 1));
             Debug.WriteLine("Taped@("+ row +", "+ col +")");
-            if( game.isShipHere(new Position(row, col)) ){
+            if( game.isEnemyHere(new Position(row, col)) ){
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
             }       
                 

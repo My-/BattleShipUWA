@@ -29,8 +29,8 @@ namespace BattleShipUWA {
             allyShips.Add(ship);
         }
 
-        public bool isShipHere(Position pos) {
-            foreach( Ship ship in allyShips ){
+        public bool isShipHere(Position pos, List<Ship> shipYard) {
+            foreach( Ship ship in shipYard){
                 if( ship.isShip(pos) ){ return true; }
                 //if( !inLimits(pos.X) || !inLimits(pos.Y) ) { return true; }
             }
@@ -56,10 +56,10 @@ namespace BattleShipUWA {
                 do {
                     Ok = true; //<------------- fix, was missing reset
                     do { head = Position.getRandom(LIMIT); }
-                    while (isShipHere(head));
+                    while (isShipHere(head, shipYard));
                     
                     if( ship.size == 1 ){
-                        if( isShipHere(head) ){ continue; }
+                        if( isShipHere(head, shipYard) ){ continue; }
                         break;
                     }
 
@@ -70,7 +70,7 @@ namespace BattleShipUWA {
                     pos = new Position(head);
                     for (int i = 0; i < ship.size -1; i++) {
                         pos.offset(direction);
-                        if ( isShipHere(pos) ) {
+                        if ( isShipHere(pos, shipYard) ) {
                             Ok = false;
                             break;
                         }
@@ -86,6 +86,10 @@ namespace BattleShipUWA {
                 shipYard.Add( sh );
                 
             }// foreach ships
+        }
+
+        public bool isEnemyHere(Position pos){
+            return isShipHere(pos, enemyShips);
         }
 
         bool inLimits(int n) {
