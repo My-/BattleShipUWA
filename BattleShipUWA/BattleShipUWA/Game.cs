@@ -32,7 +32,7 @@ namespace BattleShipUWA {
         public bool isShipHere(Position pos, List<Ship> shipYard) {
             foreach( Ship ship in shipYard){
                 if( ship.isShip(pos) ){ return true; }
-                //if( !inLimits(pos.X) || !inLimits(pos.Y) ) { return true; }
+                if( offLimits(pos) ) { return true; }
             }
             return false;
         }
@@ -53,7 +53,7 @@ namespace BattleShipUWA {
                 bool Ok = true;
                 int[] direction = new int[]{0, 0};
 
-                do {
+                do { // creates ship positions and checks them
                     Ok = true; //<------------- fix, was missing reset
                     do { head = Position.getRandom(LIMIT); }
                     while (isShipHere(head, shipYard));
@@ -63,12 +63,13 @@ namespace BattleShipUWA {
                         break;
                     }
 
-                    int value = rnd.Next(3) < 2 ? -1 : 1;  
+                    //int value = rnd.Next(3) < 2 ? -1 : 1;  
                     int n = rnd.Next(2);
-                    direction[n] = value; 
+                    direction = new int[] {0, 0};
+                    direction[n] = 1; 
 
                     pos = new Position(head);
-                    for (int i = 0; i < ship.size -1; i++) {
+                    for (int i = 0; i < ship.size; i++) {
                         pos.offset(direction);
                         if ( isShipHere(pos, shipYard) || offLimits(pos) ) {
                             Ok = false;

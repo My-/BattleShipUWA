@@ -24,10 +24,10 @@ namespace BattleShipUWA {
         public int size { get; }
 
         public bool isShip(Position pos) {
+            Position p = new Position(head);
+            if( head.equals(pos) ){ return true; }
             for( int i = 0; i < size; i++ ) {
-                if( head.offset(direction).equals(pos) ) {
-                    return true;
-                }
+                if( p.offset(direction).equals(pos) ){ return true; } 
             }
             return false;
         }

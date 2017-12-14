@@ -28,13 +28,13 @@
     <AppXManifest Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-14T16:43:09.188</Modified>
+      <Modified>2017-12-14T17:58:43.035</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
       <PackagePath>entrypoint\BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-14T16:43:08.745</Modified>
+      <Modified>2017-12-14T17:58:42.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -500,7 +500,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
       <PackagePath>BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-14T16:43:09.185</Modified>
+      <Modified>2017-12-14T17:58:43.032</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

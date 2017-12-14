@@ -56,9 +56,14 @@ namespace BattleShipUWA
             foreach(Ship ship in enemyShips){
                 Position pos = new Position(ship.head);
                 // marks grid cells wich is acupied by ship
-                for(int i = 0; i < ship.size -1; i++) {
-                    Border b = new Border();
-                    b.Background = new SolidColorBrush(Colors.Gray);
+                for(int i = 0; i < ship.size; i++) {
+                    Border b = new Border() {
+                        Background = new SolidColorBrush(Colors.Gray),
+                        BorderThickness = new Thickness(1),
+                        Child = new TextBlock() { Text = ""+ ship.size }
+                    };
+
+                    
                     b.SetValue(Grid.RowProperty, pos.X);
                     b.SetValue(Grid.ColumnProperty, pos.Y);
                     enemyGrid.Children.Add(b);
