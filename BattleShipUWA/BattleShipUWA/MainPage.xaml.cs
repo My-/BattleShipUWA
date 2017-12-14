@@ -39,7 +39,7 @@ namespace BattleShipUWA
             game = new Game();
 
             drawGrid(allyGrid);
-            drawGrid(enemyGrid);
+            //drawGrid(enemyGrid);
         }
 
         

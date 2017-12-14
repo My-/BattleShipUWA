@@ -32,6 +32,7 @@ namespace BattleShipUWA {
         public bool isShipHere(Position pos) {
             foreach( Ship ship in allyShips ){
                 if( ship.isShip(pos) ){ return true; }
+                //if( !inLimits(pos.X) || !inLimits(pos.Y) ) { return true; }
             }
             return false;
         }
@@ -53,6 +54,7 @@ namespace BattleShipUWA {
                 int[] direction = new int[]{0, 0};
 
                 do {
+                    Ok = true; //<------------- fix, was missing reset
                     do { head = Position.getRandom(LIMIT); }
                     while (isShipHere(head));
                     
@@ -66,8 +68,8 @@ namespace BattleShipUWA {
                     direction[n] = value; 
 
                     pos = new Position(head);
-                    for (int i = 0; i < ship.size; i++) {
-                        pos = pos.offset(direction);
+                    for (int i = 0; i < ship.size -1; i++) {
+                        pos.offset(direction);
                         if ( isShipHere(pos) ) {
                             Ok = false;
                             break;
