@@ -70,7 +70,7 @@ namespace BattleShipUWA {
                     pos = new Position(head);
                     for (int i = 0; i < ship.size -1; i++) {
                         pos.offset(direction);
-                        if ( isShipHere(pos, shipYard) ) {
+                        if ( isShipHere(pos, shipYard) || offLimits(pos) ) {
                             Ok = false;
                             break;
                         }
@@ -94,6 +94,10 @@ namespace BattleShipUWA {
 
         bool inLimits(int n) {
             return 0 <= n && n < LIMIT;
+        }
+
+        bool offLimits(Position pos) {
+            return !inLimits(pos.X) || !inLimits(pos.Y);
         }
     }
 }

@@ -25,8 +25,8 @@ namespace BattleShipUWA
     public sealed partial class MainPage : Page{
         //#region Global variables
         Game game;
-        Grid allyGrid;
-        Grid enemyGrid;
+        Grid allyGrid = new Grid();
+        Grid enemyGrid = new Grid();
         //#endregion
 
         public MainPage(){
@@ -41,7 +41,9 @@ namespace BattleShipUWA
             drawGrid(allyGrid);
             addMiddlePart();
             drawGrid(enemyGrid);
-            //drawShips(game.enemyShips, enemyGrid);
+
+            drawShips(game.enemyShips, enemyGrid);
+            drawShips(game.allyShips, allyGrid);
         }
 
         private void addMiddlePart(){
@@ -66,7 +68,7 @@ namespace BattleShipUWA
         }
 
         private void drawGrid(Grid grid) {
-            grid = new Grid();
+            //grid = new Grid();
             grid.Width = 500;
             grid.Height = 500;
             for (int i = 0; i < 10; i++) {

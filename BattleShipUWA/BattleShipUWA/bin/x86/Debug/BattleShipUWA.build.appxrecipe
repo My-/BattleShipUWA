@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CR1003</Machine>
+    <Machine>DESKTOP-N26I8B3</Machine>
     <WindowsUser>g00339629</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,19 +10,19 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>abe77a8f-a961-48f9-b599-c9350d8dc971</PackageIdentityName>
     <PackageIdentityPublisher>CN=g00339629</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
       <PackagePath>entrypoint\BattleShipUWA.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
@@ -334,46 +334,46 @@
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.xr.xml">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.xr.xml">
       <PackagePath>BattleShipUWA.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\g00339629\Desktop\Git\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
       <PackagePath>BattleShipUWA.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
