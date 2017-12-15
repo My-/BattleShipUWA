@@ -31,7 +31,7 @@ namespace BattleShipUWA {
             Position p = new Position(head);
             if( DEBUG ){ Debug.WriteLine("\tShip.isShip --> head "+ p); }
             if( head.equals(pos) ){ return true; }
-            for( int i = 0; i < size; i++ ) {
+            for( int i = 0; i < size -1; i++ ) {
                 p.offset(direction);
                 if( DEBUG ){ Debug.WriteLine("\tShip.isShip --> body "+ p); }
                 if( p.equals(pos) ){ return true; } 
