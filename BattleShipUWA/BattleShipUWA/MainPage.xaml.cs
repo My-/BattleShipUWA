@@ -45,14 +45,23 @@ namespace BattleShipUWA
             addMiddlePart();
             drawGrid(enemyGrid);
 
-            //drawShips(game.enemyShips, enemyGrid);
+            drawShips(game.enemyShips, enemyGrid);
             drawShips(game.allyShips, allyGrid);
         }
 
         private void addMiddlePart(){
-            mainSP.Children.Add(new StackPanel() {
-                Width = 100                
+            StackPanel sp = new StackPanel() {
+                Width = 150,
+                Orientation = Orientation.Vertical
+            };
+
+            
+            sp.Children.Add( new TextBlock(){
+                Text = "Left: "+ shipsLeft,
+                Name = "MidPartText"
             });
+
+            mainSP.Children.Add( sp );
         }
 
         private void drawShips(List<Ship> enemyShips, Grid enemyGrid) {
@@ -65,7 +74,6 @@ namespace BattleShipUWA
                         BorderThickness = new Thickness(1),
                         Child = new TextBlock() { Text = ""+ ship.size }
                     };
-
                     
                     b.SetValue(Grid.RowProperty, pos.X);
                     b.SetValue(Grid.ColumnProperty, pos.Y);
@@ -108,10 +116,17 @@ namespace BattleShipUWA
             Debug.WriteLine("Taped@("+ row +", "+ col +")");
             if( game.isEnemyHere(new Position(row, col)) ){
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
+                if( --shipsLeft < 1 ){ youWon(); }
+                TextBlock tb = (TextBlock)FindName("MidPartText");
+                tb.Text = "Left: "+ shipsLeft;
             }       
                 
         }
 
+        private void youWon() {
+            TextBlock tb = (TextBlock)FindName("MidPartText");
+            tb.Text = "You won!!";
+        }
 
         private void playGame() {
             //while( shipsLeft != 0 ) {

@@ -16,7 +16,7 @@
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>90FD2FD40BFCAA11C87701A1C1D015909475938C1C0D9FBB469FC132C5687C88</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>537831D2B8F2943C1DB9B699BCAC46755C11AD87522B5C60451EB02021A9EC2C</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>abe77a8f-a961-48f9-b599-c9350d8dc971_1.0.0.0_x86__j1dy0vwmbaxkp</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>abe77a8f-a961-48f9-b599-c9350d8dc971_j1dy0vwmbaxkp!App</RegisteredUserModeAppID>
     <RegisteredPackageID>abe77a8f-a961-48f9-b599-c9350d8dc971</RegisteredPackageID>
@@ -28,13 +28,13 @@
     <AppXManifest Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-14T18:45:47.205</Modified>
+      <Modified>2017-12-15T13:33:48.693</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
       <PackagePath>entrypoint\BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-14T18:45:46.711</Modified>
+      <Modified>2017-12-15T13:33:47.983</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -496,11 +496,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-12-14T16:23:05.298</Modified>
+      <Modified>2017-12-15T13:33:48.404</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
       <PackagePath>BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-14T18:45:47.201</Modified>
+      <Modified>2017-12-15T13:33:48.691</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

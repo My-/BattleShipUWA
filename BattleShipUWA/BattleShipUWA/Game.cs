@@ -31,8 +31,12 @@ namespace BattleShipUWA {
 
         public bool isShipHere(Position pos, List<Ship> shipYard) {
             foreach( Ship ship in shipYard){
-                if( ship.isShip(pos) ){ return true; }
-                if( offLimits(pos) ) { return true; }
+                if( ship.isShip(pos) ){
+                    if( Util.DEBUG ){ Debug.WriteLine("Game.isShipHere --> isShip "+ pos); }
+                    return true; }
+                if( offLimits(pos) ) {
+                    if( Util.DEBUG ){ Debug.WriteLine("Game.isShipHere --> offLimits "+ pos); }
+                    return true; }
             }
             return false;
         }
