@@ -191,10 +191,17 @@ namespace BattleShipUWA
             
         }
 
+        // https://stackoverflow.com/a/47837668/5322506
+        public static bool IsEqualTo( Color color1, Color color2) {
+            return color1.A == color2.A && color1.R == color2.R && color1.G == color2.G && color1.B == color2.B;
+        }
+
         private bool isStupidMove(Position pos) {
             Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
-             Debug.WriteLine("Taped@("+ row +", "+ col +")");
-            return b.GetValue(SolidColorBrush.ColorProperty) == ;
+            bool isBlue = IsEqualTo((Color)b.GetValue(SolidColorBrush.ColorProperty), Colors.Blue); // https://stackoverflow.com/a/47837668/5322506
+            return isBlue;
         }
+
+        
     }
 }
