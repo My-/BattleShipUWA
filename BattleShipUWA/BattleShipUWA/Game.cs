@@ -7,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace BattleShipUWA {
     class Game {
-        const int LIMIT = 10;
+        public const int LIMIT = 10;
+
+        public static int getHitsToWin() {
+            int hits = 0;
+            foreach( Ship ship in ships ){
+                hits += ship.size; }
+            return hits;
+        }
+
         static Random rnd = new Random(Guid.NewGuid().GetHashCode()); // https://stackoverflow.com/a/2706537; https://stackoverflow.com/a/18267477
 
         public static List<Ship> ships = new List<Ship> {

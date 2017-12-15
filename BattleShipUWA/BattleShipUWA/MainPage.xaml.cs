@@ -28,7 +28,10 @@ namespace BattleShipUWA
         Grid allyGrid = new Grid();
         Grid enemyGrid = new Grid();
         bool isEnemyTurn = false;
-        int shipsLeft = 20;
+        int enemyShipsLeft = Game.getHitsToWin();
+        int allyShipsLeft = Game.getHitsToWin();
+        string allyMessage = "Your turn. Attack!!";
+        string enemyMessage = "Prepare to die!!";
         //#endregion
 
         public MainPage(){
@@ -45,7 +48,7 @@ namespace BattleShipUWA
             addMiddlePart();
             drawGrid(enemyGrid);
 
-            drawShips(game.enemyShips, enemyGrid);
+            //drawShips(game.enemyShips, enemyGrid);
             drawShips(game.allyShips, allyGrid);
         }
 
@@ -54,11 +57,15 @@ namespace BattleShipUWA
                 Width = 150,
                 Orientation = Orientation.Vertical
             };
-
             
             sp.Children.Add( new TextBlock(){
-                Text = "Left: "+ shipsLeft,
-                Name = "MidPartText"
+                Text = "Left: "+ enemyShipsLeft,
+                Name = "shipsLeft"
+            });
+
+            sp.Children.Add( new TextBlock(){
+                Text = allyMessage,
+                Name = "Message"
             });
 
             mainSP.Children.Add( sp );
@@ -110,29 +117,84 @@ namespace BattleShipUWA
         }
 
         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
+            if( isEnemyTurn ){ return; }
+
             String senderName = ((Border)sender).Name;
             int row = Convert.ToInt32(senderName.Substring(2, 1));
             int col = Convert.ToInt32(senderName.Substring(4, 1));
             Debug.WriteLine("Taped@("+ row +", "+ col +")");
+            
+
             if( game.isEnemyHere(new Position(row, col)) ){
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
-                if( --shipsLeft < 1 ){ youWon(); }
-                TextBlock tb = (TextBlock)FindName("MidPartText");
-                tb.Text = "Left: "+ shipsLeft;
+                if( --enemyShipsLeft < 1 ){ winner("ally"); }
+                TextBlock tb = (TextBlock)FindName("shipsLeft");
+                tb.Text = "Left: "+ enemyShipsLeft;
+            }else {
+                ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
             }       
                 
         }
 
-        private void youWon() {
-            TextBlock tb = (TextBlock)FindName("MidPartText");
-            tb.Text = "You won!!";
+        private void winner(string winner) {
+            TextBlock tb = (TextBlock)FindName("shipsLeft");
+
+            switch(winner.ToLower()) {
+                case "enemy":
+                    tb.Text = "You lost";
+                    Debug.WriteLine("You lost");
+                    break;
+                case "ally":
+                    tb.Text = "You won!!";
+                    Debug.WriteLine("You Won!");
+                    break;
+            }
+            
+            
         }
 
         private void playGame() {
-            //while( shipsLeft != 0 ) {
+            while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
+                string message;
 
-            //}
+                if( isEnemyTurn ){
+                    displayMesage(enemyMessage);
+                    // add delay ~1s
+                    enemyAccack();
+                    isEnemyTurn = false; }
+                else{
+                    displayMesage(allyMessage);
+                    isEnemyTurn = true; }
+            }// while game is on
+
         }
 
+        private void displayMesage(string message) {
+            TextBlock tb = (TextBlock)FindName("Message");
+            tb.Text = message;
+        }
+
+        private void enemyAccack() {
+            Position pos;
+            do {
+                pos = Position.getRandom(Game.LIMIT);
+            }while(isStupidMove(pos));
+
+            Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
+
+            if( game.isShipHere(pos, game.enemyShips) ){
+                allyShipsLeft--;
+                b.Background = new SolidColorBrush(Colors.OrangeRed);
+                if( allyShipsLeft < 1 ) { winner("enemy"); } }
+            else{
+                b.Background = new SolidColorBrush(Colors.WhiteSmoke); }           
+            
+        }
+
+        private bool isStupidMove(Position pos) {
+            Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
+             Debug.WriteLine("Taped@("+ row +", "+ col +")");
+            return b.GetValue(SolidColorBrush.ColorProperty) == ;
+        }
     }
 }
