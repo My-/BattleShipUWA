@@ -197,10 +197,11 @@ namespace BattleShipUWA
         }
 
         private bool isStupidMove(Position pos) {
-            Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
-            bool isBlue = IsEqualTo((Color)b.GetValue(SolidColorBrush.ColorProperty), Colors.Blue); // https://stackoverflow.com/a/47837668/5322506
-            return isBlue;
-            //return false;
+            //Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
+            //bool isBlue = IsEqualTo((Color)b.GetValue(SolidColorBrush.ColorProperty), Colors.Blue); // https://stackoverflow.com/a/47837668/5322506
+            //return isBlue;
+
+            return false;
         }
 
         
