@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,12 +10,15 @@ namespace BattleShipUWA {
     class Game {
         public const int LIMIT = 10;
 
-        public static int getHitsToWin() {
-            int hits = 0;
-            foreach( Ship ship in ships ){
-                hits += ship.size; }
-            return hits;
-        }
+        //public BitArray[]  enemyShootRecord = createEnemyShootRecord();
+        public List<BitArray>  enemyShootRecord = new List<BitArray>(LIMIT) {
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT)
+        };
+        
 
         static Random rnd = new Random(Guid.NewGuid().GetHashCode()); // https://stackoverflow.com/a/2706537; https://stackoverflow.com/a/18267477
 
@@ -47,6 +51,13 @@ namespace BattleShipUWA {
                     return true; }
             }
             return false;
+        }
+
+        public static int getHitsToWin() {
+            int hits = 0;
+            foreach( Ship ship in ships ){
+                hits += ship.size; }
+            return hits;
         }
 
         void createEnemyShipYard() {
@@ -117,5 +128,8 @@ namespace BattleShipUWA {
             return Position.getRandom(LIMIT);
         }
 
+        internal void markShooPosition(Position pos) {
+            enemyShootRecord[pos.X].Set(pos.Y, true);
+        }
     }
 }

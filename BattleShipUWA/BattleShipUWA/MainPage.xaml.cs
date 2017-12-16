@@ -37,13 +37,12 @@ namespace BattleShipUWA
         public MainPage(){
             this.InitializeComponent();
 
+            game = new Game();
             createGUI();
             playGame();
         }
 
         private void createGUI() {
-            game = new Game();
-
             drawGrid(allyGrid);
             addMiddlePart();
             drawGrid(enemyGrid);
@@ -155,8 +154,7 @@ namespace BattleShipUWA
 
         private void playGame() {
             while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
-                string message;
-
+                
                 if( isEnemyTurn ){
                     displayMesage(enemyMessage);
                     // add delay ~1s
@@ -179,6 +177,7 @@ namespace BattleShipUWA
             do {
                 pos = Position.getRandom(Game.LIMIT);
             }while(isStupidMove(pos));
+            game.markShooPosition(pos);
 
             Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
 
@@ -191,17 +190,8 @@ namespace BattleShipUWA
             
         }
 
-        // https://stackoverflow.com/a/47837668/5322506
-        public static bool IsEqualTo( Color color1, Color color2) {
-            return color1.A == color2.A && color1.R == color2.R && color1.G == color2.G && color1.B == color2.B;
-        }
-
         private bool isStupidMove(Position pos) {
-            //Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
-            //bool isBlue = IsEqualTo((Color)b.GetValue(SolidColorBrush.ColorProperty), Colors.Blue); // https://stackoverflow.com/a/47837668/5322506
-            //return isBlue;
-
-            return false;
+            return game.enemyShootRecord[pos.X].Get(pos.Y);
         }
 
         
