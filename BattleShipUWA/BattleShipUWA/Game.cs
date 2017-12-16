@@ -131,5 +131,9 @@ namespace BattleShipUWA {
         internal void markShooPosition(Position pos) {
             enemyShootRecord[pos.X].Set(pos.Y, true);
         }
+
+        internal bool isShootWasDone(Position pos) {
+            return enemyShootRecord[pos.X].Get(pos.Y);
+        }
     }
 }

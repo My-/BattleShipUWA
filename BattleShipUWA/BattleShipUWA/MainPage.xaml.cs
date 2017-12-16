@@ -191,9 +191,7 @@ namespace BattleShipUWA
         }
 
         private bool isStupidMove(Position pos) {
-            return game.enemyShootRecord[pos.X].Get(pos.Y);
+            return game.isShootWasDone(pos);
         }
-
-        
     }
 }
