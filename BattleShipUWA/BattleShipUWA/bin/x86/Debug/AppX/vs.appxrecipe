@@ -28,13 +28,13 @@
     <AppXManifest Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-18T10:52:06.016</Modified>
+      <Modified>2017-12-18T11:43:04.068</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\BattleShipUWA.exe">
       <PackagePath>entrypoint\BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-18T10:52:05.760</Modified>
+      <Modified>2017-12-18T11:43:03.807</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -448,6 +448,14 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T22:11:12.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\sounds\Blast-SoundBible.com-2068539061.wav">
+      <PackagePath>Assets\sounds\Blast-SoundBible.com-2068539061.wav</PackagePath>
+      <Modified>2017-12-18T11:27:42.909</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\sounds\Explosion-SoundBible.com-2019248186.wav">
+      <PackagePath>Assets\sounds\Explosion-SoundBible.com-2019248186.wav</PackagePath>
+      <Modified>2017-12-18T11:38:41.245</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2017-11-21T17:57:05.940</Modified>
@@ -496,11 +504,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-12-18T10:47:19.681</Modified>
+      <Modified>2017-12-18T11:40:20.992</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\bin\x86\Debug\Core\BattleShipUWA.exe">
       <PackagePath>BattleShipUWA.exe</PackagePath>
-      <Modified>2017-12-18T10:52:06.014</Modified>
+      <Modified>2017-12-18T11:43:04.065</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

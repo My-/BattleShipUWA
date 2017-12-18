@@ -112,6 +112,8 @@
     <None Include="BattleShipUWA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\sounds\Blast-SoundBible.com-2068539061.wav" />
+    <Content Include="Assets\sounds\Explosion-SoundBible.com-2019248186.wav" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

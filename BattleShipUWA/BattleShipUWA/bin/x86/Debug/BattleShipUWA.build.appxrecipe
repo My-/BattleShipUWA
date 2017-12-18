@@ -334,6 +334,12 @@
     <AppxPackagedFile Include="C:\Users\g00339629\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\sounds\Blast-SoundBible.com-2068539061.wav">
+      <PackagePath>Assets\sounds\Blast-SoundBible.com-2068539061.wav</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Assets\sounds\Explosion-SoundBible.com-2019248186.wav">
+      <PackagePath>Assets\sounds\Explosion-SoundBible.com-2019248186.wav</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>

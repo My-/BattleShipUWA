@@ -381,3 +381,4 @@ M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\qualifiers.tx
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\qualifiers.txt.intermediate
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\ProjectArchitectures.txt
+M:\Git-Hub\BattleShipUWA\BattleShipUWA\BattleShipUWA\obj\x86\Debug\BattleShipUWA.csprojResolveAssemblyReference.cache

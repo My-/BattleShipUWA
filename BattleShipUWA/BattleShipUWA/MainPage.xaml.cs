@@ -7,6 +7,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,6 +35,9 @@ namespace BattleShipUWA
         int allyShipsLeft = Game.getHitsToWin();
         string allyMessage = "Your turn. Attack!!";
         string enemyMessage = "Prepare to die!!";
+
+        Uri shootSound = new Uri("ms-appx:///Assets/sounds/Blast-SoundBible.com-2068539061.wav");
+        Uri explosionSound = new Uri("ms-appx:///Assets/sounds/Explosion-SoundBible.com-2019248186.wav");
         //#endregion
 
         public MainPage(){
@@ -114,6 +119,7 @@ namespace BattleShipUWA
 
         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
             if( isEnemyTurn ){ return; }
+            Util.playSound(shootSound);
 
             String senderName = ((Border)sender).Name;
             //int row = Convert.ToInt32(senderName.Substring(2, 1));
@@ -125,11 +131,12 @@ namespace BattleShipUWA
 
             Debug.WriteLine("Taped@("+ row +", "+ col +")");            
 
-            if( game.isEnemyHere(new Position(row, col)) ){
+            if( game.isEnemyHere(new Position(row, col)) ){                
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
                 if( --enemyShipsLeft < 1 ){ winner("ally"); }
                 TextBlock tb = (TextBlock)FindName("shipsLeft");
                 tb.Text = "Left: "+ enemyShipsLeft;
+                Util.playSound(explosionSound);
             }else {
                 ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
             }       
@@ -170,6 +177,7 @@ namespace BattleShipUWA
         }
 
         private async Task allyAttack() {
+            
             //throw new NotImplementedException();
         }
 
@@ -184,13 +192,15 @@ namespace BattleShipUWA
             do { pos = Position.getRandom(Game.LIMIT); }
             while(game.isShootWasDone(pos));
 
+            Util.playSound(shootSound);
             game.markShooPosition(pos);
             Border b = (Border)FindName("ally,"+ pos.X +","+ pos.Y);
 
             if( game.isShipHere(pos, game.allyShips) ){
                 allyShipsLeft--;
                 b.Background = new SolidColorBrush(Colors.OrangeRed);
-                if( allyShipsLeft < 1 ) { winner("enemy"); } }
+                if( allyShipsLeft < 1 ) { winner("enemy"); }
+                Util.playSound(explosionSound); }                
             else{
                 b.Background = new SolidColorBrush(Colors.WhiteSmoke); }           
             
