@@ -156,9 +156,41 @@ namespace BattleShipUWA {
             saveShoots(allyShootRecord, ALLY_SHOOTS);
         }
 
+        public Game loadGame() {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            int limit;
+            bool isEmemyMove, failLoading = false;
+            string enemyShips = "", allyShips = "", enemyShootRecord = "", allyShootRecord = "";
+            try {
+                limit =  (int)localSettings.Values["limit"];
+                isEmemyMove = ((int)localSettings.Values["isEnemyMove"] == 1);
+                enemyShips = localSettings.Values[ENEMY_SHIPS].ToString();
+                allyShips = localSettings.Values[ALLY_SHIPS].ToString();
+                enemyShootRecord = localSettings.Values[ENEMY_SHOOTS].ToString();
+                allyShootRecord = localSettings.Values[ALLY_SHOOTS].ToString();
+            } catch (Exception ex) {
+                failLoading = true;
+                Debug.WriteLine("HERE: Game.loadGame() exception");
+            }
+            
+            if(failLoading) { return null; }
+
+            Game game = new Game();
+            game.isEnemyMove = isEnemyMove;
+            game.enemyShips = loadShips(enemyShips);
+            game.allyShips = loadShips(allyShips);
+
+            return null;
+        }
+
+        private List<Ship> loadShips(string shipsData) {
+            Debug.WriteLine(shipsData);
+            return null;
+        }
+
         private void saveGameDetails() {
             ApplicationData.Current.LocalSettings.Values["limit"] = LIMIT;
-            ApplicationData.Current.LocalSettings.Values["isEnemyMove"] = isEnemyMove;
+            ApplicationData.Current.LocalSettings.Values["isEnemyMove"] = isEnemyMove ? 1 : 0;
         }
 
         private void saveShoots(List<BitArray> shootRecord, string name) {
