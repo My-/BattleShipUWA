@@ -5,30 +5,42 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace BattleShipUWA {
     class Game {
         public const int LIMIT = 10;
+        private const string ALLY_SHIPS = "allyShips";
+        private const string ALLY_SHOOTS = "allyShoots";
+        private const string ENEMY_SHIPS = "enemyShips";
+        private const string ENEMY_SHOOTS = "eemyShoots";
 
-        //public BitArray[]  enemyShootRecord = createEnemyShootRecord();
-        public List<BitArray>  enemyShootRecord = new List<BitArray>(LIMIT) {
+
+         public List<BitArray>  enemyShootRecord = new List<BitArray>(LIMIT) {
             new BitArray(LIMIT), new BitArray(LIMIT),
             new BitArray(LIMIT), new BitArray(LIMIT),
             new BitArray(LIMIT), new BitArray(LIMIT),
             new BitArray(LIMIT), new BitArray(LIMIT),
             new BitArray(LIMIT), new BitArray(LIMIT)
         };
-        
 
-        static Random rnd = new Random(Guid.NewGuid().GetHashCode()); // https://stackoverflow.com/a/2706537; https://stackoverflow.com/a/18267477
+        public List<BitArray>  allyShootRecord = new List<BitArray>(LIMIT) {
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT),
+            new BitArray(LIMIT), new BitArray(LIMIT)
+        };
 
         public static List<Ship> ships = new List<Ship> {
             new Ship(4),
             new Ship(3), new Ship(3),
             new Ship(2), new Ship(2), new Ship(2),
             new Ship(1), new Ship(1), new Ship(1), new Ship(1)
-        }; 
-
+        };
+        
+        public bool isEnemyMove = false;
+        static Random rnd = new Random(Guid.NewGuid().GetHashCode()); // https://stackoverflow.com/a/2706537; https://stackoverflow.com/a/18267477
         public List<Ship> allyShips = new List<Ship>();
         public List<Ship> enemyShips = new List<Ship>();       
 
@@ -135,5 +147,36 @@ namespace BattleShipUWA {
         internal bool isShootWasDone(Position pos) {
             return enemyShootRecord[pos.X].Get(pos.Y);
         }
+
+        public void saveGame() {
+            saveGameDetails();
+            saveShips(allyShips, ALLY_SHIPS);
+            saveShips(enemyShips, ENEMY_SHIPS);
+            saveShoots(enemyShootRecord, ENEMY_SHOOTS);
+            saveShoots(allyShootRecord, ALLY_SHOOTS);
+        }
+
+        private void saveGameDetails() {
+            ApplicationData.Current.LocalSettings.Values["limit"] = LIMIT;
+            ApplicationData.Current.LocalSettings.Values["isEnemyMove"] = isEnemyMove;
+        }
+
+        private void saveShoots(List<BitArray> shootRecord, string name) {
+            string s = "";
+            foreach(BitArray ba in shootRecord) {
+                s += ba.ToString();
+            }
+            ApplicationData.Current.LocalSettings.Values[name] = s;
+        }
+
+        private void saveShips(List<Ship> allyShips, string name){
+            string s = "";
+            foreach(Ship ship in allyShips){ s += ship.ToString() +"\n"; }
+            ApplicationData.Current.LocalSettings.Values[name] = s;
+            //ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            //localSettings.Values[name] = s;
+        }
+
+
     }
 }

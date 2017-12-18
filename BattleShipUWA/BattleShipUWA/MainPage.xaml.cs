@@ -30,7 +30,7 @@ namespace BattleShipUWA
         Game game;
         Grid allyGrid = new Grid(){ Name = "ally"};
         Grid enemyGrid = new Grid(){ Name = "enemy"};
-        bool isEnemyTurn = false;
+        bool isEnemyTurn;
         int enemyShipsLeft = Game.getHitsToWin();
         int allyShipsLeft = Game.getHitsToWin();
         string allyMessage = "Your turn. Attack!!";
@@ -44,6 +44,7 @@ namespace BattleShipUWA
             this.InitializeComponent();
 
             game = new Game();
+            isEnemyTurn = game.isEnemyMove;
             createGUI();
             playGame();
         }
