@@ -140,8 +140,9 @@ namespace BattleShipUWA {
             return Position.getRandom(LIMIT);
         }
 
-        internal void markShooPosition(Position pos) {
-            enemyShootRecord[pos.X].Set(pos.Y, true);
+        internal void markShooPosition(Position pos, bool enemy) {
+            if( enemy ){ enemyShootRecord[pos.X].Set(pos.Y, true); }
+            else{ allyShootRecord[pos.X].Set(pos.Y, true); }
         }
 
         internal bool isShootWasDone(Position pos) {
@@ -156,7 +157,34 @@ namespace BattleShipUWA {
             saveShoots(allyShootRecord, ALLY_SHOOTS);
         }
 
-        public Game loadGame() {
+       
+
+        private void saveGameDetails() {
+            ApplicationData.Current.LocalSettings.Values["limit"] = LIMIT;
+            ApplicationData.Current.LocalSettings.Values["isEnemyMove"] = isEnemyMove ? 1 : 0;
+        }
+
+        private void saveShoots(List<BitArray> shootRecord, string name) {
+            string s = "";
+            foreach(BitArray ba in shootRecord) {
+                for(int i = 0; i < ba.Length; i++) {
+                    s += (ba.Get(i) ? 1 : 0) +" ";
+                }
+                s += "\n";
+            }
+            ApplicationData.Current.LocalSettings.Values[name] = s;
+            Debug.WriteLine("Game.saveShoots --> "+ s);            
+        }
+
+        private void saveShips(List<Ship> allyShips, string name){
+            string s = "";
+            foreach(Ship ship in allyShips){ s += ship.ToString() +"\n"; }
+            ApplicationData.Current.LocalSettings.Values[name] = s;
+            //ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            //localSettings.Values[name] = s;
+        }
+
+         public Game loadGame() {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             int limit;
             bool isEmemyMove, failLoading = false;
@@ -186,27 +214,6 @@ namespace BattleShipUWA {
         private List<Ship> loadShips(string shipsData) {
             Debug.WriteLine(shipsData);
             return null;
-        }
-
-        private void saveGameDetails() {
-            ApplicationData.Current.LocalSettings.Values["limit"] = LIMIT;
-            ApplicationData.Current.LocalSettings.Values["isEnemyMove"] = isEnemyMove ? 1 : 0;
-        }
-
-        private void saveShoots(List<BitArray> shootRecord, string name) {
-            string s = "";
-            foreach(BitArray ba in shootRecord) {
-                s += ba.ToString();
-            }
-            ApplicationData.Current.LocalSettings.Values[name] = s;
-        }
-
-        private void saveShips(List<Ship> allyShips, string name){
-            string s = "";
-            foreach(Ship ship in allyShips){ s += ship.ToString() +"\n"; }
-            ApplicationData.Current.LocalSettings.Values[name] = s;
-            //ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            //localSettings.Values[name] = s;
         }
 
 

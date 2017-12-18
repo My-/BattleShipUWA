@@ -121,6 +121,7 @@ namespace BattleShipUWA
         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
             if( isEnemyTurn ){ return; }
             Util.playSound(shootSound);
+            
 
             String senderName = ((Border)sender).Name;
             //int row = Convert.ToInt32(senderName.Substring(2, 1));
@@ -130,7 +131,8 @@ namespace BattleShipUWA
             int row = Convert.ToInt32(parts[1]);
             int col = Convert.ToInt32(parts[2]);
 
-            Debug.WriteLine("Taped@("+ row +", "+ col +")");            
+            Debug.WriteLine("Taped@("+ row +", "+ col +")");  
+            game.markShooPosition(new BattleShipUWA.Position(row, col), false);          
 
             if( game.isEnemyHere(new Position(row, col)) ){                
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
@@ -140,7 +142,8 @@ namespace BattleShipUWA
                 Util.playSound(explosionSound);
             }else {
                 ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
-            }       
+            } 
+            game.saveGame();      
                 
         }
 
@@ -194,7 +197,7 @@ namespace BattleShipUWA
             while(game.isShootWasDone(pos));
 
             Util.playSound(shootSound);
-            game.markShooPosition(pos);
+            game.markShooPosition(pos, true);
             Border b = (Border)FindName("ally,"+ pos.X +","+ pos.Y);
 
             if( game.isShipHere(pos, game.allyShips) ){
