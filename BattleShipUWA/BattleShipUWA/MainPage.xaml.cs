@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -25,8 +26,8 @@ namespace BattleShipUWA
     public sealed partial class MainPage : Page{
         //#region Global variables
         Game game;
-        Grid allyGrid = new Grid();
-        Grid enemyGrid = new Grid();
+        Grid allyGrid = new Grid(){ Name = "ally"};
+        Grid enemyGrid = new Grid(){ Name = "enemy"};
         bool isEnemyTurn = false;
         int enemyShipsLeft = Game.getHitsToWin();
         int allyShipsLeft = Game.getHitsToWin();
@@ -70,20 +71,15 @@ namespace BattleShipUWA
             mainSP.Children.Add( sp );
         }
 
-        private void drawShips(List<Ship> enemyShips, Grid enemyGrid) {
-            foreach(Ship ship in enemyShips){
+        private void drawShips(List<Ship> shipYard, Grid grid) {
+            foreach(Ship ship in shipYard){
                 Position pos = new Position(ship.head);
                 // marks grid cells wich is acupied by ship
                 for(int i = 0; i < ship.size; i++) {
-                    Border b = new Border() {
-                        Background = new SolidColorBrush(Colors.Gray),
-                        BorderThickness = new Thickness(1),
-                        Child = new TextBlock() { Text = ""+ ship.size }
-                    };
-                    
-                    b.SetValue(Grid.RowProperty, pos.X);
-                    b.SetValue(Grid.ColumnProperty, pos.Y);
-                    enemyGrid.Children.Add(b);
+                    Border b = (Border)FindName(grid.Name +","+ pos.X +","+ pos.Y);
+                    b.Background = new SolidColorBrush(Colors.Gray);
+                    b.BorderThickness = new Thickness(1);
+                    b.Child = new TextBlock() { Text = ""+ ship.size };
                     pos.offset(ship.direction);
                 }
             }// foreach enemShips
@@ -104,8 +100,9 @@ namespace BattleShipUWA
                         Width = 50,
                         BorderThickness = new Thickness(5),
                         Background = new SolidColorBrush(Colors.Blue),
-                        Name = "b_" + row + "_" + col
+                        Name = grid.Name +"," + row + "," + col
                     };
+
                     border.SetValue(Grid.RowProperty,row);
                     border.SetValue(Grid.ColumnProperty, col);
                     grid.Children.Add(border);
@@ -119,8 +116,13 @@ namespace BattleShipUWA
             if( isEnemyTurn ){ return; }
 
             String senderName = ((Border)sender).Name;
-            int row = Convert.ToInt32(senderName.Substring(2, 1));
-            int col = Convert.ToInt32(senderName.Substring(4, 1));
+            //int row = Convert.ToInt32(senderName.Substring(2, 1));
+            //int col = Convert.ToInt32(senderName.Substring(4, 1));
+
+            List<string> parts = senderName.Split(',').ToList<string>();
+            int row = Convert.ToInt32(parts[1]);
+            int col = Convert.ToInt32(parts[2]);
+
             Debug.WriteLine("Taped@("+ row +", "+ col +")");
             
 
@@ -152,7 +154,7 @@ namespace BattleShipUWA
             
         }
 
-        private void playGame() {
+        private async void playGame() {
             while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
                 
                 if( isEnemyTurn ){
@@ -162,9 +164,14 @@ namespace BattleShipUWA
                     isEnemyTurn = false; }
                 else{
                     displayMesage(allyMessage);
+                    await allyAttack();
                     isEnemyTurn = true; }
             }// while game is on
 
+        }
+
+        private async Task allyAttack() {
+            //throw new NotImplementedException();
         }
 
         private void displayMesage(string message) {
@@ -174,14 +181,14 @@ namespace BattleShipUWA
 
         private void enemyAccack() {
             Position pos;
-            do {
-                pos = Position.getRandom(Game.LIMIT);
-            }while(isStupidMove(pos));
+
+            do { pos = Position.getRandom(Game.LIMIT); }
+            while(game.isShootWasDone(pos));
+
             game.markShooPosition(pos);
+            Border b = (Border)FindName("ally,"+ pos.X +","+ pos.Y);
 
-            Border b = (Border)FindName("b_"+ pos.X +"_"+ pos.Y);
-
-            if( game.isShipHere(pos, game.enemyShips) ){
+            if( game.isShipHere(pos, game.allyShips) ){
                 allyShipsLeft--;
                 b.Background = new SolidColorBrush(Colors.OrangeRed);
                 if( allyShipsLeft < 1 ) { winner("enemy"); } }
@@ -190,8 +197,6 @@ namespace BattleShipUWA
             
         }
 
-        private bool isStupidMove(Position pos) {
-            return game.isShootWasDone(pos);
-        }
+        
     }
 }
