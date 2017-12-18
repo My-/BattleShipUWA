@@ -106,7 +106,7 @@ namespace BattleShipUWA
                     border.SetValue(Grid.RowProperty,row);
                     border.SetValue(Grid.ColumnProperty, col);
                     grid.Children.Add(border);
-                    border.Tapped += Border_Tapped;
+                    if( grid.Name.Equals("enemy") ){ border.Tapped += Border_Tapped; }                    
                 }
             }
             mainSP.Children.Add(grid);            
@@ -123,8 +123,7 @@ namespace BattleShipUWA
             int row = Convert.ToInt32(parts[1]);
             int col = Convert.ToInt32(parts[2]);
 
-            Debug.WriteLine("Taped@("+ row +", "+ col +")");
-            
+            Debug.WriteLine("Taped@("+ row +", "+ col +")");            
 
             if( game.isEnemyHere(new Position(row, col)) ){
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
