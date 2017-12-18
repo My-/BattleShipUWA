@@ -46,7 +46,7 @@ namespace BattleShipUWA
             game = new Game();
             isEnemyTurn = game.isEnemyMove;
             createGUI();
-            playGame();
+            if( isEnemyTurn ) { enemyAttack(); }
         }
 
         private void createGUI() {
@@ -61,13 +61,17 @@ namespace BattleShipUWA
         private void addMiddlePart(){
             StackPanel sp = new StackPanel() {
                 Width = 150,
-                Orientation = Orientation.Vertical
+                Orientation = Orientation.Vertical,
+                HorizontalAlignment = HorizontalAlignment.Center
+
             };
-            
+            sp.Children.Add(new Border() { Height = 50 });
             sp.Children.Add( new TextBlock(){
-                Text = "Left: "+ enemyShipsLeft,
+                Text = allyShipsLeft +" : "+ enemyShipsLeft,
                 Name = "shipsLeft"
             });
+
+            sp.Children.Add(new Border() { Height = 50 });
 
             sp.Children.Add( new TextBlock(){
                 Text = allyMessage,
@@ -118,7 +122,53 @@ namespace BattleShipUWA
             mainSP.Children.Add(grid);            
         }
 
-        private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
+       
+
+        private void winner(string winner) {
+            TextBlock tb = (TextBlock)FindName("shipsLeft");
+
+            switch(winner.ToLower()) {
+                case "enemy":
+                    tb.Text = "You lost";
+                    Debug.WriteLine("You lost");
+                    break;
+                case "ally":
+                    tb.Text = "You won!!";
+                    Debug.WriteLine("You Won!");
+                    break;
+            }
+            
+            
+        }
+
+        //private async void playGame() {
+        //    while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
+                
+        //        if( isEnemyTurn ){
+        //            displayMesage(enemyMessage);
+        //            // add delay ~1s
+        //            enemyAttack();
+        //            isEnemyTurn = false; }
+        //        else{
+        //            displayMesage(allyMessage);
+        //            await allyAttack();
+        //            isEnemyTurn = true; }
+        //    }// while game is on
+
+        //}
+
+        private async Task allyAttack() {
+            
+            //throw new NotImplementedException();
+        }
+
+        private void displayMesage(string message) {
+            TextBlock tb = (TextBlock)FindName("Message");
+            tb.Text = message;
+        }
+
+
+         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
             if( isEnemyTurn ){ return; }
             Util.playSound(shootSound);
             
@@ -138,59 +188,19 @@ namespace BattleShipUWA
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
                 if( --enemyShipsLeft < 1 ){ winner("ally"); }
                 TextBlock tb = (TextBlock)FindName("shipsLeft");
-                tb.Text = "Left: "+ enemyShipsLeft;
+                tb.Text = allyShipsLeft +" : "+ enemyShipsLeft;
                 Util.playSound(explosionSound);
             }else {
                 ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
             } 
+
+            //Task.Delay(1000).ContinueWith(t=> enemyAccack()); // https://stackoverflow.com/a/34458726/5322506
+            enemyAttack();
             game.saveGame();      
                 
         }
 
-        private void winner(string winner) {
-            TextBlock tb = (TextBlock)FindName("shipsLeft");
-
-            switch(winner.ToLower()) {
-                case "enemy":
-                    tb.Text = "You lost";
-                    Debug.WriteLine("You lost");
-                    break;
-                case "ally":
-                    tb.Text = "You won!!";
-                    Debug.WriteLine("You Won!");
-                    break;
-            }
-            
-            
-        }
-
-        private async void playGame() {
-            while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
-                
-                if( isEnemyTurn ){
-                    displayMesage(enemyMessage);
-                    // add delay ~1s
-                    enemyAccack();
-                    isEnemyTurn = false; }
-                else{
-                    displayMesage(allyMessage);
-                    await allyAttack();
-                    isEnemyTurn = true; }
-            }// while game is on
-
-        }
-
-        private async Task allyAttack() {
-            
-            //throw new NotImplementedException();
-        }
-
-        private void displayMesage(string message) {
-            TextBlock tb = (TextBlock)FindName("Message");
-            tb.Text = message;
-        }
-
-        private void enemyAccack() {
+        private void enemyAttack() {
             Position pos;
 
             do { pos = Position.getRandom(Game.LIMIT); }
@@ -204,7 +214,9 @@ namespace BattleShipUWA
                 allyShipsLeft--;
                 b.Background = new SolidColorBrush(Colors.OrangeRed);
                 if( allyShipsLeft < 1 ) { winner("enemy"); }
-                Util.playSound(explosionSound); }                
+                Util.playSound(explosionSound);
+                TextBlock tb = (TextBlock)FindName("shipsLeft");
+                tb.Text = allyShipsLeft +" : "+ enemyShipsLeft;}                
             else{
                 b.Background = new SolidColorBrush(Colors.WhiteSmoke); }           
             
