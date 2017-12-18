@@ -156,8 +156,7 @@ namespace BattleShipUWA {
             saveShoots(enemyShootRecord, ENEMY_SHOOTS);
             saveShoots(allyShootRecord, ALLY_SHOOTS);
         }
-
-       
+               
 
         private void saveGameDetails() {
             ApplicationData.Current.LocalSettings.Values["limit"] = LIMIT;
@@ -173,7 +172,7 @@ namespace BattleShipUWA {
                 s += "\n";
             }
             ApplicationData.Current.LocalSettings.Values[name] = s;
-            Debug.WriteLine("Game.saveShoots --> "+ s);            
+            //Debug.WriteLine("Game.saveShoots --> "+ s);            
         }
 
         private void saveShips(List<Ship> allyShips, string name){
@@ -207,8 +206,19 @@ namespace BattleShipUWA {
             game.isEnemyMove = isEnemyMove;
             game.enemyShips = loadShips(enemyShips);
             game.allyShips = loadShips(allyShips);
+            game.allyShootRecord = loadShootRecord(allyShootRecord);
+            game.enemyShootRecord = loadShootRecord(enemyShootRecord);
 
             return null;
+        }
+
+        private List<BitArray> loadShootRecord(string shootRecord) {
+            List<BitArray> shoots = new List<BitArray>();
+            string[] data = shootRecord.Split(new char[] {' ','\n'}, StringSplitOptions.RemoveEmptyEntries);
+            for(int i = 0; i < data.Length; i++) {
+                shoots[i /LIMIT].Set(i %10, true);
+            }
+            return shoots;
         }
 
         private List<Ship> loadShips(string shipsData) {
