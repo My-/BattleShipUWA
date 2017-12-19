@@ -153,12 +153,16 @@ namespace BattleShipUWA
                 Height = 50,
                 //Text = "New Game",
                 Content = "New Game" // wtf.. Why not Text??? https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.text(v=vs.110).aspx
+                
             };
+            //b.Click += new EventHandler(newGame); // https://stackoverflow.com/q/6744590/5322506
 
             sp.Children.Add(b);
         }
 
-        
+        private void newGame(object sender, EventArgs e) {
+            throw new NotImplementedException();
+        }
 
         private void displayMesage(string message) {
             TextBlock tb = (TextBlock)FindName(MESSAGE_AREA);
@@ -168,13 +172,9 @@ namespace BattleShipUWA
 
          private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
             if( isEnemyTurn ){ return; }
-            Util.playSound(shootSound);
-            
+            Util.playSound(shootSound);            
 
             String senderName = ((Border)sender).Name;
-            //int row = Convert.ToInt32(senderName.Substring(2, 1));
-            //int col = Convert.ToInt32(senderName.Substring(4, 1));
-
             List<string> parts = senderName.Split(',').ToList<string>();
             int row = Convert.ToInt32(parts[1]);
             int col = Convert.ToInt32(parts[2]);
@@ -196,7 +196,7 @@ namespace BattleShipUWA
                 ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
             } 
 
-            game.markShooPosition(new BattleShipUWA.Position(row, col), false);
+            game.markShooPosition(new BattleShipUWA.Position(row, col), false); // record position as shoot
             //Task.Delay(1000).ContinueWith(t=> enemyAccack()); // https://stackoverflow.com/a/34458726/5322506
             enemyAttack();
             game.saveGame();      
