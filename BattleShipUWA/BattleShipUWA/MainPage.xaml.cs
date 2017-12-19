@@ -35,6 +35,10 @@ namespace BattleShipUWA
         int allyShipsLeft = Game.getHitsToWin();
         string allyMessage = "Your turn. Attack!!";
         string enemyMessage = "Prepare to die!!";
+        const string SCORE_AREA = "scoreArea";
+        const string MESSAGE_AREA = "messageArea";
+        const string BUTTON_AREA = "bottonArea";
+
 
         Uri shootSound = new Uri("ms-appx:///Assets/sounds/Blast-SoundBible.com-2068539061.wav");
         Uri explosionSound = new Uri("ms-appx:///Assets/sounds/Explosion-SoundBible.com-2019248186.wav");
@@ -63,19 +67,24 @@ namespace BattleShipUWA
                 Width = 150,
                 Orientation = Orientation.Vertical,
                 HorizontalAlignment = HorizontalAlignment.Center
-
             };
+
             sp.Children.Add(new Border() { Height = 50 });
             sp.Children.Add( new TextBlock(){
                 Text = allyShipsLeft +" : "+ enemyShipsLeft,
-                Name = "shipsLeft"
+                Name = SCORE_AREA
             });
 
             sp.Children.Add(new Border() { Height = 50 });
-
             sp.Children.Add( new TextBlock(){
                 Text = allyMessage,
-                Name = "Message"
+                Name = MESSAGE_AREA
+            });
+
+            sp.Children.Add(new Border() { Height = 50 });
+            sp.Children.Add( new StackPanel(){
+                 Orientation = Orientation.Vertical,
+                 Name = BUTTON_AREA
             });
 
             mainSP.Children.Add( sp );
@@ -125,7 +134,7 @@ namespace BattleShipUWA
        
 
         private void winner(string winner) {
-            TextBlock tb = (TextBlock)FindName("shipsLeft");
+            TextBlock tb = (TextBlock)FindName(MESSAGE_AREA);
 
             switch(winner.ToLower()) {
                 case "enemy":
@@ -138,32 +147,21 @@ namespace BattleShipUWA
                     break;
             }
             
-            
+            StackPanel sp = (StackPanel)FindName(BUTTON_AREA);
+            Button b = new Button() {
+                Width = 100,
+                Height = 50,
+                //Text = "New Game",
+                Content = "New Game" // wtf.. Why not Text??? https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.button.text(v=vs.110).aspx
+            };
+
+            sp.Children.Add(b);
         }
 
-        //private async void playGame() {
-        //    while(enemyShipsLeft > 0 && allyShipsLeft > 0) {
-                
-        //        if( isEnemyTurn ){
-        //            displayMesage(enemyMessage);
-        //            // add delay ~1s
-        //            enemyAttack();
-        //            isEnemyTurn = false; }
-        //        else{
-        //            displayMesage(allyMessage);
-        //            await allyAttack();
-        //            isEnemyTurn = true; }
-        //    }// while game is on
-
-        //}
-
-        private async Task allyAttack() {
-            
-            //throw new NotImplementedException();
-        }
+        
 
         private void displayMesage(string message) {
-            TextBlock tb = (TextBlock)FindName("Message");
+            TextBlock tb = (TextBlock)FindName(MESSAGE_AREA);
             tb.Text = message;
         }
 
@@ -181,19 +179,24 @@ namespace BattleShipUWA
             int row = Convert.ToInt32(parts[1]);
             int col = Convert.ToInt32(parts[2]);
 
-            Debug.WriteLine("Taped@("+ row +", "+ col +")");  
-            game.markShooPosition(new BattleShipUWA.Position(row, col), false);          
+            Debug.WriteLine("Taped@("+ row +", "+ col +")");                       
 
             if( game.isEnemyHere(new Position(row, col)) ){                
                 ((Border)sender).Background = new SolidColorBrush(Colors.Red);
-                if( --enemyShipsLeft < 1 ){ winner("ally"); }
-                TextBlock tb = (TextBlock)FindName("shipsLeft");
+                if( game.allyShootRecord[row].Get(col) ) {
+                    TextBlock tm = (TextBlock)FindName(MESSAGE_AREA);
+                    tm.Text = "Stupid move"; }
+                else {
+                    if( --enemyShipsLeft < 1 ){ winner("ally"); } }
+                
+                TextBlock tb = (TextBlock)FindName(SCORE_AREA);
                 tb.Text = allyShipsLeft +" : "+ enemyShipsLeft;
                 Util.playSound(explosionSound);
             }else {
                 ((Border)sender).Background = new SolidColorBrush(Colors.Yellow);
             } 
 
+            game.markShooPosition(new BattleShipUWA.Position(row, col), false);
             //Task.Delay(1000).ContinueWith(t=> enemyAccack()); // https://stackoverflow.com/a/34458726/5322506
             enemyAttack();
             game.saveGame();      
@@ -202,7 +205,7 @@ namespace BattleShipUWA
 
         private void enemyAttack() {
             Position pos;
-
+            //Task.Delay(500).ContinueWith(t=> displayMesage("Prepare To Die")); // dont work
             do { pos = Position.getRandom(Game.LIMIT); }
             while(game.isShootWasDone(pos));
 
@@ -215,7 +218,7 @@ namespace BattleShipUWA
                 b.Background = new SolidColorBrush(Colors.OrangeRed);
                 if( allyShipsLeft < 1 ) { winner("enemy"); }
                 Util.playSound(explosionSound);
-                TextBlock tb = (TextBlock)FindName("shipsLeft");
+                TextBlock tb = (TextBlock)FindName(SCORE_AREA);
                 tb.Text = allyShipsLeft +" : "+ enemyShipsLeft;}                
             else{
                 b.Background = new SolidColorBrush(Colors.WhiteSmoke); }           
